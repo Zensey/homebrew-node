@@ -5,7 +5,7 @@
 class MysteriumNode < Formula
   desc "Run exit node of Mysterium Network"
   homepage "http://mysterium.network"
-  url "https://github.com/Zensey/homebrew-node/archive/refs/tags/1.0.1.zip"
+  url "https://github.com/Zensey/homebrew-node/archive/refs/tags/0.0.1.zip"
 
   depends_on cask: "docker"
 
