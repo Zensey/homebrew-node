@@ -1,5 +1,29 @@
 #!/usr/bin/env bash
-#set -x
+
+FILE=$HOME/Library/LaunchDaemons/docker.launcher.plist
+if [ ! -f $FILE ]
+then
+  mkdir -p $HOME/Library/LaunchDaemons
+
+tee -a $FILE > /dev/null << 'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>docker.launcher</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/home/remote/src/homebrew-node/bin/container.sh</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>
+EOF
+
+
+fi
 
 docker info > /dev/zero 2>&1
 r=$?
@@ -48,3 +72,5 @@ else
      mysteriumnetwork/myst:latest \
      service --agreed-terms-and-conditions
 fi
+
+
